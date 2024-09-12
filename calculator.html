@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Dias</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,400;1,800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            padding: 20px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        h1 {
+        font-size: 42px;
+        }
+
+        footer {
+            padding-top: 20px; 
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #6689ff; 
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #2054ff; 
+        }
+
+        .btn-primary {
+        color: #ffffff;
+        background: #6689ff;
+        border-color: #6689ff;
+        padding: 12px 24px; 
+        border-width: 1px; 
+        border-radius: 3px;
+        font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-weight: 500;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+        transition: .33s;
+        }
+
+        .btn-primary:hover {
+        color: #ffffff;
+        background: #000000;
+        border-color: #000000;
+        }
+        
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .text-block {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+        <div class="text-center">
+            <h1>Calculadora de Dias</h1>
+            <p>Uma calculadora de dias é uma ferramenta útil que permite calcular a diferença de tempo entre duas datas específicas. 
+                Com ela, é possível saber quantos dias se passaram entre dois eventos ou quantos dias faltam para um evento futuro. Essa funcionalidade é amplamente utilizada em diversas situações, como para planejar férias, projetos, compromissos ou até mesmo para acompanhar prazos importantes.</p>
+        </div>
+
+        <div class="text-center">
+            <h2>Por Que usar uma calculadora de dias?</h2>
+            <p>Usar uma calculadora de dias traz praticidade e precisão em tarefas que envolvem o gerenciamento de tempo. Manualmente calcular a diferença entre datas pode ser tedioso e sujeito a erros, especialmente quando envolve meses com diferentes números de dias ou anos bissextos. 
+                Com a calculadora, você automatiza esse processo, garantindo um resultado confiável e imediato. Além disso, ela economiza tempo, principalmente em situações onde há necessidade de calcular múltiplas datas ou em projetos com prazos apertados, ajudando na organização e no planejamento eficaz.</p>
+        </div>
+    <div class="container text-center">
+        <h3>Calcule a Diferença de Dias</h3>
+        
+        <div class="mb-3">
+            <label for="data1" class="form-label">Data Inicial:</label>
+            <input type="date" class="form-control" id="data1">
+        </div>
+
+        <div class="mb-3">
+            <label for="data2" class="form-label">Data Final:</label>
+            <input type="date" class="form-control" id="data2">
+        </div>
+
+        <button class="btn-primary" onclick="calcularDiferenca()">Calcular</button>
+        
+        <div id="resultado" class="mt-3 alert alert-info" role="alert"></div>
+    </div>
+    <footer>
+        <p class="text-center">
+            Desenvolvido por <a href="https://github.com/SabrinaMarquesF" target="_blank">Sabrina Marques</a>
+        </p>
+    </footer>
+
+    <!-- Bootstrap JS Bundle com Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function calcularDiferenca() {
+            const data1 = new Date(document.getElementById('data1').value);
+            const data2 = new Date(document.getElementById('data2').value);
+
+            if (isNaN(data1.getTime()) || isNaN(data2.getTime())) {
+                document.getElementById('resultado').innerHTML = 'Por favor, insira datas válidas.';
+                return;
+            }
+
+            const diffTime = Math.abs(data2 - data1);
+
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            document.getElementById('resultado').innerHTML = `A diferença é de ${diffDays} dia(s).`;
+        }
+    </script>
+
+</body>
+</html>
